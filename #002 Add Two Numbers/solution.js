@@ -11,35 +11,28 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-    var headNode = new ListNode(0);
-    var currentNode = headNode;
-    var previousNode = null;
+    var head = new ListNode(0);
+    var current = head;
     var carry = 0;
-    
-    while(l1 || l2 || carry != 0) {
-        var val1 = l1 && l1.val ? l1.val : 0;
-        var val2 = l2 && l2.val ? l2.val : 0;
+    while(l1 || l2 || carry > 0) {
+        var val1 = l1 == null ? 0 : l1.val;
+        var val2 = l2 == null ? 0 : l2.val;
         var sum = val1 + val2 + carry;
-        
         if(sum >= 10) {
-            carry = Math.floor(sum / 10);
+            carry = parseInt(Math.floor(sum / 10));
             sum = sum % 10;
         } else {
             carry = 0;
         }
-        
-        currentNode.val = sum;
-        
-        if(l1 && l1.next != null || l2 && l2.next != null || carry != 0) {
-            var nextNode = new ListNode(0);
-            currentNode.next = nextNode;
-            currentNode = nextNode;
+        current.next = new ListNode(sum);
+        current = current.next;
+        if(l1) {
+            l1 = l1.next;
         }
-        
-        l1 = l1 && l1.next ? l1.next : undefined;
-        l2 = l2 && l2.next ? l2.next : undefined;
+        if(l2){
+            l2 = l2.next;
+        }
     }
     
-    return headNode;
-
+    return head.next;
 };
