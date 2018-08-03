@@ -1,11 +1,16 @@
-Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+Given a collection of distinct integers, return all possible permutations.
 
 Example:
 
-Input:
+Input: [1,2,3]
+Output:
+```
 [
-  1->4->5,
-  1->3->4,
-  2->6
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
 ]
-Output: 1->1->2->3->4->4->5->6
+```
